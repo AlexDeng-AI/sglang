@@ -1,3 +1,8 @@
+# 使用 ARG 传递代理配置
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+ARG NO_PROXY
+
 ARG CUDA_VERSION=12.5.1
 
 FROM nvcr.io/nvidia/tritonserver:24.04-py3-min
