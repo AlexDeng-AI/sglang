@@ -17,6 +17,9 @@ jobs:
         cuda_version: ['12.1.1']
         build_type: ['all']
     steps:
+      - name: Print current user
+        run: whoami
+
       - name: Delete huge unnecessary tools folder
         run: rm -rf /opt/hostedtoolcache
 
