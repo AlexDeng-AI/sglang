@@ -30,13 +30,13 @@ ARG CUDA_VERSION
 RUN python3 -m pip install --upgrade pip setuptools wheel html5lib six \
     && git clone --depth=1 https://github.com/sgl-project/sglang.git \
     && if [ "$CUDA_VERSION" = "12.1.1" ]; then \
-         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu121; \
+         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu121 --progress-bar on --verbose; \
        elif [ "$CUDA_VERSION" = "12.4.1" ]; then \
-         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu124; \
+         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu124 --progress-bar on --verbose; \
        elif [ "$CUDA_VERSION" = "12.5.1" ]; then \
-         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu124; \
+         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu124 --progress-bar on --verbose; \
        elif [ "$CUDA_VERSION" = "11.8.0" ]; then \
-         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu118; \
+         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu118 --progress-bar on --verbose; \
          python3 -m pip install sgl-kernel -i https://docs.sglang.ai/whl/cu118; \
        else \
          echo "Unsupported CUDA version: $CUDA_VERSION" && exit 1; \
