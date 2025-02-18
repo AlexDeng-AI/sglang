@@ -10,6 +10,11 @@ FROM nvcr.io/nvidia/tritonserver:24.04-py3-min
 ARG BUILD_TYPE=all
 ENV DEBIAN_FRONTEND=noninteractive
 
+# 设置源为上海交通大学镜像源
+RUN sed -i.bak 's|http://archive.ubuntu.com|https://mirror.sjtu.edu.cn|g' /etc/apt/sources.list \
+    && sed -i 's|http://security.ubuntu.com|https://mirror.sjtu.edu.cn|g' /etc/apt/sources.list \
+    && apt update -y
+
 RUN echo 'tzdata tzdata/Areas select America' | debconf-set-selections \
     && echo 'tzdata tzdata/Zones/America select Los_Angeles' | debconf-set-selections \
     && apt update -y \
